@@ -2,6 +2,10 @@ package com.design.patterns;
 
 import com.design.patterns.Singlton.SingleTonConcept;
 import com.design.patterns.builder.Mobile;
+import com.design.patterns.decorator.AlarmDecorator;
+import com.design.patterns.decorator.Bike;
+import com.design.patterns.decorator.ElectricDecorator;
+import com.design.patterns.decorator.RoadBike;
 import com.design.patterns.factory.Db;
 import com.design.patterns.factory.DbFactory;
 import com.design.patterns.factory.DbType;
@@ -24,6 +28,7 @@ public class Main {
         System.out.println("Factory 2 Example : 3 ");
         System.out.println("Prototype : 4 ");
         System.out.println("Builder : 5 ");
+        System.out.println("Decorator : 6");
         Scanner in = new Scanner(System.in);
         int s = in.nextInt();
         switch (s) {
@@ -32,9 +37,25 @@ public class Main {
             case 3 -> factoryExample2();
             case 4 -> prototypeExample();
             case 5 -> builderExample();
+            case 6 -> decoratorExample();
         }
 //gg
 
+    }
+
+    private static void decoratorExample() {
+        System.out.println("Decorator Example Runnning ");
+       /* Bike bike=new RoadBike("Road Bike");
+        bike.showDetails();*/
+
+
+        Bike bike=new ElectricDecorator(new AlarmDecorator(new RoadBike("Hero")));
+        bike.showDetails();
+
+
+        /*
+        Bike bikeElectric=new ElectricDecorator(new AlarmDecorator(new RoadBike("Hero")));
+        bikeElectric.showDetails();*/
     }
 
     private static void builderExample() {
